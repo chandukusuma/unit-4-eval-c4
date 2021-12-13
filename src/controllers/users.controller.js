@@ -2,15 +2,24 @@ const express = require("express");
 
 const user = require("../models/users.model");
 
+const upload = require("../middlewares/upload")
+
 const router = express.Router();
 
-router.post("/", async (req, res) => {
+router.post("/", upload.single("profile_photo_url"), async (req, res) => {
 
     try{
 
-        const User = await user.create(req.body);
+        const User = await user.create({
 
-        return res.status(201).json({User});
+            name : req.body.name,
+            email : req.body.email,
+            password: req.body.password,
+            profile_photo_url : req.file.path,
+            roles: req.body.roles
+        });
+
+        return res.status(201).send(User);
     }
     catch(e){
 
