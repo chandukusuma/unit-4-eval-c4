@@ -16,7 +16,7 @@ router.post("", collection.single("Poster_url"), async(req, res) => {
             actors: req.body.actors,
             languages : req.body.languages,
             directors: req.body.directors,
-            Poster_url : req.file.path
+            Poster : req.file.path
         })
 
         return res.status(201).send(Movie);

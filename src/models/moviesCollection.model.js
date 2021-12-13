@@ -10,7 +10,7 @@ const movieSchema = new mongoose.Schema({
 
     directors : [{type: String, required: true}],
 
-    Poster_url : [{type: String, required: true}],
+    Poster : [{type: String, required: true}],
 },
 {
     versionKey: false,
