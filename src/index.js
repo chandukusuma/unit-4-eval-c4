@@ -11,7 +11,11 @@ const moviesCollection = require("./controllers/movieCollection.controller")
 
 const theatreName = require("./controllers/theatre.controller");
 
-const screenName = require("./controllers/screens.controller")
+const screenName = require("./controllers/screens.controller");
+
+const showTime  = require("./controllers/shows.controller");
+
+app.use("/shows", showTime);
 
 
 app.use("/user", usersController);
