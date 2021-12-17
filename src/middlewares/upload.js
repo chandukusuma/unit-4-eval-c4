@@ -1,6 +1,6 @@
 const multer = require("multer");
 
-const path =require("path")
+const path = require("path")
 
 const storage = multer.diskStorage({
 
@@ -10,6 +10,7 @@ const storage = multer.diskStorage({
     },
 
     filename: function (req, file, callback){
+        
         const uniquePrefix = Date.now() + "-" + Math.round(Math.random() * 1E9)
 
         callback(null, uniquePrefix + "-" + file.originalname);
@@ -18,7 +19,7 @@ const storage = multer.diskStorage({
 
 const fileFilter = (req, file, callback)=> {
 
-    if(file.mimetype === "image/jpg" || file.mimetype === "image.png"){
+    if(file.mimetype === "image/jpg" || file.mimetype === "image/png" || file.mimetype === "image/jpeg"){
 
         callback(null, true)
     }
@@ -34,7 +35,7 @@ const upload = multer ({
     storage,
     fileFilter,
     limits : {
-        fileSize : 1024* 1024 * 5
+        fileSize : 1024* 1024 * 10
     }
 })
 

@@ -19,7 +19,7 @@ router.post("/", async(req, res) => {
 router.get("/", async(req, res) => {
 
     try{
-     const screen = await Screen.find().lean().exec();
+     const screen = await Screen.find().populate("theatre_ids").lean().exec();
  
      return res.status(201).send(screen)
     }

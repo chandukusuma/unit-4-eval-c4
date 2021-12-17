@@ -2,11 +2,11 @@ const express = require("express")
 
 const movies = require("../models/moviesCollection.model")
 
-const collection = require("../middlewares/movie")
+const collection = require("../middlewares/upload")
 
 const router = express.Router();
 
-router.post("", collection.single("Poster_url"), async(req, res) => {
+router.post("", collection.single("Poster"), async(req, res) => {
 
     try{
 
